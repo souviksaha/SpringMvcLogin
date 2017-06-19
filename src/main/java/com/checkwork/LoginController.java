@@ -18,7 +18,8 @@ public class LoginController {
 
 		String uname=req.getParameter("uname");
 		String pass=req.getParameter("pass");
-
+     
+		/*
 		if(uname.equals("abc") && pass.equals("123"))
 		{
 			System.out.println("Inside success");
@@ -29,7 +30,21 @@ public class LoginController {
 			System.out.println("Inside else");
 			mv.setViewName("index.jsp");
 		}
-
+         */				
+		
+		LoginService ls=new LoginService();
+		
+		if(ls.check(uname,pass))
+		{
+			//System.out.println("Inside success");
+			mv.setViewName("success.jsp");
+		}
+		else
+		{
+			//System.out.println("Inside fail");
+			mv.setViewName("index.jsp");
+		}
+		
 		return mv;
 
 	}//end of ModelAndView
